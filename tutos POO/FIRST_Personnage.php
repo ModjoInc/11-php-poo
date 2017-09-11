@@ -8,16 +8,27 @@ class Personnage
   private $_localisation;
   private $_experience;
   private $_degats;
+//------------déclaration des constantes en rapport avec la force--------//
+  const FORCE_PETITE = 20;
+  const FORCE_MOYENNE = 50;
+  const FORCE_GRANDE = 80;
+
+  private static $_textADire = 'tu vas pleurer jusqu\'à c\'que tu pleure';
+
+public function __construct($forceInitiale)
+{
+  $this->setForce($forceInitiale);
+}
 
 //------------constructeur---------//
-public function __construct($force, $degats)
-{
-  echo 'le constructeur fonctionne, les objets ont été créés';
-  $this->setForce($force);
-  $this->setDegats($degats);
-  $this->_experience = 1;
-
-}
+// public function __construct($force, $degats)
+// {
+//   echo 'le constructeur fonctionne, les objets ont été créés';
+//   $this->setForce($force);
+//   $this->setDegats($degats);
+//   $this->_experience = 1;
+//
+// }
 //------------attack---------------//
   public function frapper(Personnage $persoAFrapper)
   {
@@ -31,19 +42,28 @@ public function __construct($force, $degats)
 //------------accesseur FORCE--------------//
   public function setForce($force)
   {
-    if (!is_int($force))
+    // if (!is_int($force))
+    // {
+    //   trigger_error('l\experience d\un personnage doit être un nombre entier', E_USER_WARNING);
+    //   return;
+    // }
+    //
+    // if ($force > 100)
+    // {
+    //   trigger_error('l\'expérience d\'un personnage ne doit pas dépasser 100', E_USER_WARNING);
+    //   return;
+    // }
+    if (in_array($force, [self::FORCE_PETITE, self::FORCE_MOYENNE, self::FORCE_GRANDE]))
     {
-      trigger_error('l\experience d\un personnage doit être un nombre entier', E_USER_WARNING);
-      return;
-    }
-
-    if ($force > 100)
-    {
-      trigger_error('l\'expérience d\'un personnage ne doit pas dépasser 100', E_USER_WARNING);
-      return;
+      $this->_force = $force;
     }
 
     $this->_force = $force;
+  }
+
+  public static function parler()
+  {
+    echo self::$_textADire;
   }
 //--------------accesseur Dégats----------------------//
 public function setDegats($degats)
