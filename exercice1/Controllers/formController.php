@@ -4,14 +4,14 @@ class formController {
   public $nom;
   public $prenom;
   public $modifier;
-
+    // ajout d'un construct pour lors de la création de l'ojet on puisse paramétrer
     public function __construct($action, $nom, $prenom,$modifier){
       $this->action = $action;
       $this->nom = $nom;
       $this->prenom = $prenom;
       $this->modifier = $modifier;
     }
-
+    //création des fonctions à appeler pour créer le formulaire
     public function create(){
       return "<div class='form-group'><form action='" . $this->action . "' method='POST'></div>";
     }
@@ -39,7 +39,7 @@ class formController {
     public function check(){
       return '<div class="form-group"><input type="checkbox" name="" value=""></div>';
     }
-
+    // fonction pour clore le formulaire
     public function close(){
       return '</form>';
     }
