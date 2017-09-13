@@ -8,4 +8,4 @@
 
 - Exercices Helper Class **DONE**
 - Exercice Parc de Voiture **DONE**
-- Exercice Connect DB __En cours
+- Exercice Connect DB _En cours_
